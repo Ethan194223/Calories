@@ -9,8 +9,37 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ember">
+<meta name="theme-color" content="#14141f">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="canonical" href="https://ember-calorie.guide/calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ember">
+<meta property="og:title" content="Daily Calorie Calculator — Ember">
+<meta property="og:description" content="Calculate your daily maintenance calories with the Mifflin-St Jeor formula, then see what eating for loss, maintenance or gain looks like.">
+<meta property="og:url" content="https://ember-calorie.guide/calculator.html">
+<meta property="og:image" content="https://ember-calorie.guide/img/og-banner.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Daily Calorie Calculator — Ember">
+<meta name="twitter:description" content="Calculate your daily maintenance calories with the Mifflin-St Jeor formula, then see what eating for loss, maintenance or gain looks like.">
+<meta name="twitter:image" content="https://ember-calorie.guide/img/og-banner.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Daily Calorie Calculator",
+  "description": "Calculate your daily maintenance calories with the Mifflin-St Jeor formula.",
+  "url": "https://ember-calorie.guide/calculator.html",
+  "inLanguage": "en",
+  "about": { "@type": "Thing", "name": "Calorie counting" }
+}
+</script>
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site">
   <div class="wrap nav-inner">
@@ -27,7 +56,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="page-hero">
     <div class="wrap">
       <p class="eyebrow">Your numbers</p>
@@ -68,7 +97,7 @@
         </div>
 
         <div class="field">
-          <label for="activity">Activity level</label>
+          <label for="activity"><img class="sprite cell-sprite" src="img/gear.svg" alt="settings icon" width="20" height="20"> Activity level</label>
           <select id="activity">
             <option value="1.2">Sedentary — desk job, little exercise</option>
             <option value="1.375" selected>Lightly active — 1–3 workouts a week</option>
@@ -83,7 +112,7 @@
       <!-- Results -->
       <aside class="result-panel" aria-live="polite">
         <div class="result-row" style="border-top:none">
-          <div class="label">Estimated maintenance (TDEE)</div>
+          <div class="label"><img class="sprite cell-sprite" src="img/flame.svg" alt="flame icon" width="22" height="22"> Estimated maintenance (TDEE)</div>
           <div class="big-number"><span id="tdee">0</span> <small>kcal/day</small></div>
         </div>
 
@@ -139,6 +168,7 @@
   </div>
 </footer>
 
+<script src="script.js"></script>
 <script>
 (function () {
   var els = {

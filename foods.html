@@ -9,8 +9,37 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ember">
+<meta name="theme-color" content="#14141f">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="canonical" href="https://ember-calorie.guide/foods.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ember">
+<meta property="og:title" content="Food Database — Ember">
+<meta property="og:description" content="Search and filter around fifty everyday foods with typical servings, calories and macros.">
+<meta property="og:url" content="https://ember-calorie.guide/foods.html">
+<meta property="og:image" content="https://ember-calorie.guide/img/og-banner.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Food Database — Ember">
+<meta name="twitter:description" content="Search and filter around fifty everyday foods with typical servings, calories and macros.">
+<meta name="twitter:image" content="https://ember-calorie.guide/img/og-banner.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Food Database",
+  "description": "Search and filter around fifty everyday foods with typical servings, calories and macros.",
+  "url": "https://ember-calorie.guide/foods.html",
+  "inLanguage": "en",
+  "about": { "@type": "Thing", "name": "Food nutrition facts" }
+}
+</script>
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site">
   <div class="wrap nav-inner">
@@ -27,7 +56,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="page-hero">
     <div class="wrap">
       <p class="eyebrow">Quick reference</p>
@@ -91,6 +120,7 @@
   </div>
 </footer>
 
+<script src="script.js"></script>
 <script>
 (function () {
   var FOODS = [
@@ -155,6 +185,8 @@
     { n: 'Red wine', s: '5 oz (148 ml)', k: 125, p: 0, c: 4, f: 0, cat: 'Drinks' }
   ];
 
+  var SPR_MAP = { 'Fruits': 'apple', 'Vegetables': 'broccoli', 'Protein': 'drumstick', 'Grains': 'rice', 'Dairy': 'egg', 'Snacks & Fats': 'peanut', 'Drinks': 'soda' };
+
   var rowsEl = document.getElementById('rows');
   var countEl = document.getElementById('count');
   var searchEl = document.getElementById('search');
@@ -174,8 +206,9 @@
       var nameMatch = f.n.toLowerCase().indexOf(q) !== -1;
       if (!catMatch || !nameMatch) return;
       visible++;
+      var spr = SPR_MAP[f.cat] || 'flame';
       html += '<tr class="food-row">' +
-        '<td><strong>' + esc(f.n) + '</strong></td>' +
+        '<td><img class="sprite row-sprite" src="img/' + spr + '.svg" alt="" width="26" height="26"><strong>' + esc(f.n) + '</strong></td>' +
         '<td>' + esc(f.s) + '</td>' +
         '<td class="num">' + f.k + ' kcal</td>' +
         '<td><span class="macro-pill"><b>' + f.p + 'g</b> P · <b>' + f.c + 'g</b> C · <b>' + f.f + 'g</b> F</span></td>' +

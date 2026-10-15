@@ -777,6 +777,82 @@ footer.site {
 
 .disclaimer { margin-top: 24px; font-size: 0.85em; color: var(--muted); }
 
+/* ---------- Pixel sprites ---------- */
+
+.sprite {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sprite-strip { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 26px; }
+.sprite-strip .sprite { width: 42px; height: 42px; }
+
+.hero-sprites {
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center;
+}
+.hero-sprites .sprite { width: 58px; height: 58px; }
+
+.cell-sprite { width: 24px; height: 24px; margin-right: 8px; vertical-align: middle; }
+.row-sprite { width: 26px; height: 26px; margin-right: 10px; vertical-align: middle; }
+
+/* skip link (a11y + SEO) */
+.skip {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--accent); color: #000;
+  font-family: var(--font-display); font-size: 0.6rem;
+  padding: 12px 16px; z-index: 10000;
+}
+.skip:focus { left: 0; top: 0; }
+
+/* motivation status bar (floating, every page) */
+.statusbar {
+  position: fixed;
+  left: 18px; bottom: 18px;
+  z-index: 1000;
+  max-width: 380px;
+  background: var(--ink);
+  border: 3px solid;
+  border-color: var(--accent) var(--frame-dark) var(--frame-dark) var(--accent);
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.6);
+  padding: 12px 30px 12px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95em;
+  color: var(--text);
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.statusbar .ico { width: 30px; height: 30px; flex: 0 0 30px; margin-top: 2px; cursor: pointer; }
+.statusbar .msg { margin: 0; }
+.statusbar .cursor {
+  display: inline-block; width: 9px; height: 1.05em;
+  background: var(--accent); vertical-align: -0.15em; margin-left: 3px;
+  animation: blink 1s steps(1) infinite;
+}
+.statusbar .dismiss {
+  position: absolute; top: 6px; right: 8px;
+  background: none; border: none; color: var(--muted);
+  font-family: var(--font-display); font-size: 0.65rem; cursor: pointer; padding: 4px;
+}
+.statusbar .dismiss:hover { color: var(--accent-pink); }
+
+@keyframes blink { 50% { opacity: 0; } }
+
+/* home quest / motivation panel */
+.quest-panel { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+.quest-ico { width: 88px; height: 88px; flex: 0 0 88px; }
+.quest-text { flex: 1; min-width: 240px; }
+.quest-text .qlabel { font-family: var(--font-display); font-size: 0.6rem; color: var(--cyan); text-transform: uppercase; margin-bottom: 10px; }
+.quest-text .quote { font-size: 1.25em; color: var(--text); margin: 0 0 10px; }
+.quest-text .quotee { color: var(--muted); font-size: 0.9em; }
+.quest-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+
+@media (max-width: 560px) {
+  .statusbar { left: 10px; right: 10px; max-width: none; }
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 900px) {

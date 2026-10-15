@@ -9,8 +9,44 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Ember">
+<meta name="theme-color" content="#14141f">
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<link rel="canonical" href="https://ember-calorie.guide/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ember">
+<meta property="og:title" content="Ember — Understand the calories you eat">
+<meta property="og:description" content="A calm, practical guide to food energy: what calories are, how to count them, and how to use them without the drama.">
+<meta property="og:url" content="https://ember-calorie.guide/">
+<meta property="og:image" content="https://ember-calorie.guide/img/og-banner.png">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ember — Understand the calories you eat">
+<meta name="twitter:description" content="A calm, practical guide to food energy: what calories are, how to count them, and how to use them without the drama.">
+<meta name="twitter:image" content="https://ember-calorie.guide/img/og-banner.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Ember",
+  "url": "https://ember-calorie.guide/",
+  "description": "A calm, practical guide to food energy: what calories are, how to count them, and how to use them without the drama.",
+  "inLanguage": "en",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://ember-calorie.guide/foods.html?q={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site">
   <div class="wrap nav-inner">
@@ -27,7 +63,7 @@
   </div>
 </header>
 
-<main>
+<main id="main">
   <!-- Hero -->
   <section class="hero">
     <div class="wrap hero-grid">
@@ -38,6 +74,14 @@
         <div class="hero-actions">
           <a class="btn btn-primary" href="calculator.html">Calculate your needs</a>
           <a class="btn btn-ghost" href="what-are-calories.html">Learn the basics</a>
+        </div>
+        <div class="sprite-strip" aria-hidden="true">
+          <img class="sprite" src="img/apple.svg" alt="" width="42" height="42">
+          <img class="sprite" src="img/egg.svg" alt="" width="42" height="42">
+          <img class="sprite" src="img/rice.svg" alt="" width="42" height="42">
+          <img class="sprite" src="img/drumstick.svg" alt="" width="42" height="42">
+          <img class="sprite" src="img/salmon.svg" alt="" width="42" height="42">
+          <img class="sprite" src="img/soda.svg" alt="" width="42" height="42">
         </div>
       </div>
 
@@ -100,29 +144,54 @@
       </div>
       <div class="explore-grid">
         <a class="explore-card" href="what-are-calories.html">
+          <img class="sprite" src="img/flame.svg" alt="flame pixel art" width="36" height="36">
           <span class="num">01</span>
           <h3>What are calories?</h3>
           <p>The definition, where they come from, and how your body spends them — the boring-sounding basics that make everything else obvious.</p>
           <span class="go">Start here →</span>
         </a>
         <a class="explore-card" href="calculator.html">
+          <img class="sprite" src="img/gear.svg" alt="calculator pixel art" width="36" height="36">
           <span class="num">02</span>
           <h3>Daily calorie calculator</h3>
           <p>Work out your maintenance calories in under a minute, then see what eating for loss, maintenance or gain looks like in real numbers.</p>
           <span class="go">Get your number →</span>
         </a>
         <a class="explore-card" href="foods.html">
+          <img class="sprite" src="img/apple.svg" alt="apple pixel art" width="36" height="36">
           <span class="num">03</span>
           <h3>Food database</h3>
           <p>Around fifty everyday foods with typical servings and macros, searchable and filterable — a quick reference for the meals you actually eat.</p>
           <span class="go">Browse foods →</span>
         </a>
         <a class="explore-card" href="tips.html">
+          <img class="sprite" src="img/heart.svg" alt="heart pixel art" width="36" height="36">
           <span class="num">04</span>
           <h3>Tips &amp; FAQ</h3>
           <p>Practical ways to make counting easier, the mistakes people make, and straight answers to the questions that come up most.</p>
           <span class="go">Read the advice →</span>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily quest / motivation -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Daily quest</p>
+        <h2>Today's motivation</h2>
+      </div>
+      <div class="panel quest-panel">
+        <img class="sprite quest-ico" src="img/trophy.svg" alt="motivation trophy pixel art" width="88" height="88">
+        <div class="quest-text">
+          <div class="qlabel">Quest log · refreshing advice</div>
+          <p class="quote" id="dailyQuote"></p>
+          <span class="quotee">— Ember's quest log</span>
+          <div class="quest-actions">
+            <button class="btn btn-ghost" id="newQuote" type="button">New quest</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -159,5 +228,6 @@
   </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
