@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Food Database — Ember</title>
+<meta name="description" content="Search and filter around fifty everyday foods with typical servings, calories and macros.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>Ember</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a class="nav-link" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="what-are-calories.html">What are calories</a></li>
+        <li><a class="nav-link" href="calculator.html">Calculator</a></li>
+        <li><a class="nav-link active" href="foods.html">Food database</a></li>
+        <li><a class="nav-link" href="tips.html">Tips &amp; FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="eyebrow">Quick reference</p>
+      <h1>Food database</h1>
+      <p class="lede">Typical values for everyday foods — search by name or filter by category. Servings are common household amounts; check the label on packaged goods, since brands vary.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="toolbar">
+        <div class="search-box">
+          <input type="search" id="search" placeholder="Search foods…" aria-label="Search foods">
+        </div>
+        <div class="filters" id="filters" role="group" aria-label="Filter by category">
+          <button class="filter on" data-cat="All">All</button>
+          <button class="filter" data-cat="Fruits">Fruits</button>
+          <button class="filter" data-cat="Vegetables">Vegetables</button>
+          <button class="filter" data-cat="Protein">Protein</button>
+          <button class="filter" data-cat="Grains">Grains</button>
+          <button class="filter" data-cat="Dairy">Dairy</button>
+          <button class="filter" data-cat="Snacks &amp; Fats">Snacks &amp; Fats</button>
+          <button class="filter" data-cat="Drinks">Drinks</button>
+        </div>
+      </div>
+
+      <p class="result-count" id="count" aria-live="polite"></p>
+
+      <div class="table-scroll">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Food</th>
+              <th>Serving</th>
+              <th>Calories</th>
+              <th>Macros (P · C · F)</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html" style="margin-bottom:10px"><span class="dot"></span>Ember</a>
+        <p>Understanding the calories you eat — calmly, accurately, without the drama.</p>
+      </div>
+      <ul>
+        <li><a href="what-are-calories.html">What are calories</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="foods.html">Food database</a></li>
+        <li><a href="tips.html">Tips &amp; FAQ</a></li>
+      </ul>
+    </div>
+    <p class="disclaimer">Educational content only. Values are typical estimates — not medical advice. Always check the label on packaged foods.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var FOODS = [
+    // Fruits
+    { n: 'Apple', s: '1 medium (182 g)', k: 95, p: 1, c: 25, f: 0, cat: 'Fruits' },
+    { n: 'Banana', s: '1 medium (118 g)', k: 105, p: 1, c: 27, f: 0, cat: 'Fruits' },
+    { n: 'Orange', s: '1 medium (131 g)', k: 62, p: 1, c: 15, f: 0, cat: 'Fruits' },
+    { n: 'Strawberries', s: '1 cup (152 g)', k: 49, p: 1, c: 12, f: 0, cat: 'Fruits' },
+    { n: 'Grapes', s: '1 cup (151 g)', k: 104, p: 1, c: 27, f: 0, cat: 'Fruits' },
+    { n: 'Blueberries', s: '1 cup (148 g)', k: 84, p: 1, c: 21, f: 0, cat: 'Fruits' },
+    { n: 'Mango', s: '1 cup (165 g)', k: 99, p: 1, c: 25, f: 0, cat: 'Fruits' },
+    { n: 'Watermelon', s: '1 cup (152 g)', k: 46, p: 1, c: 12, f: 0, cat: 'Fruits' },
+
+    // Vegetables
+    { n: 'Broccoli', s: '1 cup raw (91 g)', k: 31, p: 3, c: 6, f: 0, cat: 'Vegetables' },
+    { n: 'Carrot', s: '1 medium (61 g)', k: 25, p: 1, c: 6, f: 0, cat: 'Vegetables' },
+    { n: 'Spinach', s: '1 cup raw (30 g)', k: 7, p: 1, c: 1, f: 0, cat: 'Vegetables' },
+    { n: 'Sweet potato', s: '1 medium baked (114 g)', k: 103, p: 2, c: 24, f: 0, cat: 'Vegetables' },
+    { n: 'Tomato', s: '1 medium (123 g)', k: 22, p: 1, c: 5, f: 0, cat: 'Vegetables' },
+    { n: 'Bell pepper', s: '1 cup (149 g)', k: 30, p: 1, c: 6, f: 0, cat: 'Vegetables' },
+    { n: 'Kale', s: '1 cup (21 g)', k: 8, p: 1, c: 1, f: 0, cat: 'Vegetables' },
+    { n: 'Avocado', s: '½ fruit (100 g)', k: 160, p: 2, c: 9, f: 15, cat: 'Vegetables' },
+
+    // Protein
+    { n: 'Chicken breast', s: '100 g cooked', k: 165, p: 31, c: 0, f: 4, cat: 'Protein' },
+    { n: 'Egg', s: '1 large (50 g)', k: 72, p: 6, c: 0, f: 5, cat: 'Protein' },
+    { n: 'Salmon', s: '100 g cooked', k: 206, p: 22, c: 0, f: 12, cat: 'Protein' },
+    { n: 'Tofu', s: '100 g firm', k: 76, p: 8, c: 2, f: 4, cat: 'Protein' },
+    { n: 'Ground beef, 90% lean', s: '100 g cooked', k: 217, p: 26, c: 0, f: 12, cat: 'Protein' },
+    { n: 'Greek yogurt, nonfat', s: '1 cup (170 g)', k: 100, p: 17, c: 6, f: 0, cat: 'Protein' },
+    { n: 'Shrimp', s: '100 g cooked', k: 99, p: 24, c: 0, f: 0, cat: 'Protein' },
+    { n: 'Tuna, canned in water', s: '100 g', k: 116, p: 26, c: 0, f: 1, cat: 'Protein' },
+
+    // Grains
+    { n: 'White rice', s: '1 cup cooked (158 g)', k: 205, p: 4, c: 45, f: 0, cat: 'Grains' },
+    { n: 'Brown rice', s: '1 cup cooked (195 g)', k: 216, p: 5, c: 45, f: 2, cat: 'Grains' },
+    { n: 'Oats', s: '½ cup dry (40 g)', k: 150, p: 5, c: 27, f: 3, cat: 'Grains' },
+    { n: 'Whole wheat bread', s: '1 slice (28 g)', k: 81, p: 4, c: 14, f: 1, cat: 'Grains' },
+    { n: 'Pasta', s: '1 cup cooked (140 g)', k: 220, p: 8, c: 43, f: 1, cat: 'Grains' },
+    { n: 'Quinoa', s: '1 cup cooked (185 g)', k: 222, p: 8, c: 39, f: 4, cat: 'Grains' },
+    { n: 'Potato', s: '1 medium baked (173 g)', k: 161, p: 4, c: 37, f: 0, cat: 'Grains' },
+
+    // Dairy
+    { n: 'Whole milk', s: '1 cup (244 g)', k: 149, p: 8, c: 12, f: 8, cat: 'Dairy' },
+    { n: 'Cheddar cheese', s: '1 oz (28 g)', k: 113, p: 7, c: 0, f: 9, cat: 'Dairy' },
+    { n: 'Mozzarella, part-skim', s: '1 oz (28 g)', k: 72, p: 7, c: 1, f: 4, cat: 'Dairy' },
+    { n: 'Butter', s: '1 tbsp (14 g)', k: 102, p: 0, c: 0, f: 12, cat: 'Dairy' },
+
+    // Snacks & Fats
+    { n: 'Almonds', s: '1 oz (28 g)', k: 164, p: 6, c: 6, f: 14, cat: 'Snacks & Fats' },
+    { n: 'Peanut butter', s: '2 tbsp (32 g)', k: 188, p: 8, c: 6, f: 16, cat: 'Snacks & Fats' },
+    { n: 'Dark chocolate 70%', s: '1 oz (28 g)', k: 170, p: 2, c: 13, f: 12, cat: 'Snacks & Fats' },
+    { n: 'Potato chips', s: '1 oz (28 g)', k: 152, p: 2, c: 15, f: 10, cat: 'Snacks & Fats' },
+    { n: 'Hummus', s: '2 tbsp (30 g)', k: 70, p: 2, c: 4, f: 5, cat: 'Snacks & Fats' },
+    { n: 'Olive oil', s: '1 tbsp (14 g)', k: 119, p: 0, c: 0, f: 14, cat: 'Snacks & Fats' },
+    { n: 'Honey', s: '1 tbsp (21 g)', k: 64, p: 0, c: 17, f: 0, cat: 'Snacks & Fats' },
+
+    // Drinks
+    { n: 'Cola', s: '12 oz (355 ml)', k: 140, p: 0, c: 39, f: 0, cat: 'Drinks' },
+    { n: 'Orange juice', s: '1 cup (248 g)', k: 112, p: 2, c: 26, f: 0, cat: 'Drinks' },
+    { n: 'Beer', s: '12 oz (355 ml)', k: 153, p: 2, c: 13, f: 0, cat: 'Drinks' },
+    { n: 'Red wine', s: '5 oz (148 ml)', k: 125, p: 0, c: 4, f: 0, cat: 'Drinks' }
+  ];
+
+  var rowsEl = document.getElementById('rows');
+  var countEl = document.getElementById('count');
+  var searchEl = document.getElementById('search');
+  var cat = 'All';
+
+  function esc(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function render() {
+    var q = searchEl.value.trim().toLowerCase();
+    var visible = 0;
+    var html = '';
+
+    FOODS.forEach(function (f) {
+      var catMatch = cat === 'All' || f.cat === cat;
+      var nameMatch = f.n.toLowerCase().indexOf(q) !== -1;
+      if (!catMatch || !nameMatch) return;
+      visible++;
+      html += '<tr class="food-row">' +
+        '<td><strong>' + esc(f.n) + '</strong></td>' +
+        '<td>' + esc(f.s) + '</td>' +
+        '<td class="num">' + f.k + ' kcal</td>' +
+        '<td><span class="macro-pill"><b>' + f.p + 'g</b> P · <b>' + f.c + 'g</b> C · <b>' + f.f + 'g</b> F</span></td>' +
+        '</tr>';
+    });
+
+    rowsEl.innerHTML = html;
+    countEl.textContent = visible + (visible === 1 ? ' food' : ' foods') + ' shown';
+  }
+
+  // Build filters
+  var filterBtns = document.querySelectorAll('#filters .filter');
+  filterBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterBtns.forEach(function (b) { b.classList.remove('on'); });
+      btn.classList.add('on');
+      cat = btn.getAttribute('data-cat');
+      render();
+    });
+  });
+
+  searchEl.addEventListener('input', render);
+
+  render();
+})();
+</script>
+</body>
+</html>

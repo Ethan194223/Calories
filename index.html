@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember — Understand the calories you eat</title>
+<meta name="description" content="A calm, practical guide to food energy: what calories are, how to count them, and how to use them without the drama.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav-inner">
+    <a class="logo" href="index.html"><span class="dot"></span>Ember</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a class="nav-link active" href="index.html">Home</a></li>
+        <li><a class="nav-link" href="what-are-calories.html">What are calories</a></li>
+        <li><a class="nav-link" href="calculator.html">Calculator</a></li>
+        <li><a class="nav-link" href="foods.html">Food database</a></li>
+        <li><a class="nav-link" href="tips.html">Tips &amp; FAQ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">A practical guide to food energy</p>
+        <h1>Calories aren't the enemy. Understanding them is the first step.</h1>
+        <p class="lede">Ember is a plain-spoken guide to what calories actually are, how your body uses them, and how to think about them without the diet-culture drama. No hacks, no shame — just numbers that make sense.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="calculator.html">Calculate your needs</a>
+          <a class="btn btn-ghost" href="what-are-calories.html">Learn the basics</a>
+        </div>
+      </div>
+
+      <aside class="macro-card" aria-label="Example daily macro split">
+        <h3>What a day looks like</h3>
+        <p class="sub">A typical 2,000 kcal day, split by macronutrient.</p>
+        <div class="donut-wrap">
+          <svg width="170" height="170" viewBox="0 0 170 170" role="img" aria-label="Pie chart: 50 percent carbohydrates, 20 percent protein, 30 percent fat">
+            <circle cx="85" cy="85" r="66" fill="none" stroke="#3f3f66" stroke-width="26"/>
+            <circle cx="85" cy="85" r="66" fill="none" stroke="#ffd23f" stroke-width="26"
+                    stroke-dasharray="207.3 414.7" stroke-dashoffset="0" transform="rotate(-90 85 85)"/>
+            <circle cx="85" cy="85" r="66" fill="none" stroke="#3ddc84" stroke-width="26"
+                    stroke-dasharray="82.9 414.7" stroke-dashoffset="-207.3" transform="rotate(-90 85 85)"/>
+            <circle cx="85" cy="85" r="66" fill="none" stroke="#ff5c7a" stroke-width="26"
+                    stroke-dasharray="124.4 414.7" stroke-dashoffset="-290.2" transform="rotate(-90 85 85)"/>
+            <text x="85" y="82" text-anchor="middle" font-family="Press Start 2P" font-size="22" fill="#eef2ff">2,000</text>
+            <text x="85" y="102" text-anchor="middle" font-family="VT323" font-size="15" fill="#9b9bc0">kcal</text>
+          </svg>
+          <ul class="legend">
+            <li><span class="swatch" style="background:#ffd23f"></span><span class="lbl">Carbs</span><span class="val">50%</span></li>
+            <li><span class="swatch" style="background:#3ddc84"></span><span class="lbl">Protein</span><span class="val">20%</span></li>
+            <li><span class="swatch" style="background:#ff5c7a"></span><span class="lbl">Fat</span><span class="val">30%</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Three principles -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The short version</p>
+        <h2>Three ideas worth remembering</h2>
+      </div>
+      <ol class="principles">
+        <li>
+          <h3>A calorie is a unit of energy</h3>
+          <p>One food calorie is the energy needed to raise a kilogram of water by one degree. Everything you eat is fuel your body can measure — and it does, all day, every day.</p>
+        </li>
+        <li>
+          <h3>Balance is what drives change</h3>
+          <p>Eat more than you burn and you store the surplus. Eat less and you draw on stored energy. That's the entire engine — hormones, appetite and timing all work through it.</p>
+        </li>
+        <li>
+          <h3>Numbers are a tool, not a verdict</h3>
+          <p>Tracking calories works because it replaces guesswork with information. Used lightly, it's a compass. Used harshly, it stops being useful. The math is on your side either way.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Explore -->
+  <section style="background:var(--soft)">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Explore the site</p>
+        <h2>Four pages, one topic</h2>
+        <p class="lede">Each page stands alone. Start anywhere.</p>
+      </div>
+      <div class="explore-grid">
+        <a class="explore-card" href="what-are-calories.html">
+          <span class="num">01</span>
+          <h3>What are calories?</h3>
+          <p>The definition, where they come from, and how your body spends them — the boring-sounding basics that make everything else obvious.</p>
+          <span class="go">Start here →</span>
+        </a>
+        <a class="explore-card" href="calculator.html">
+          <span class="num">02</span>
+          <h3>Daily calorie calculator</h3>
+          <p>Work out your maintenance calories in under a minute, then see what eating for loss, maintenance or gain looks like in real numbers.</p>
+          <span class="go">Get your number →</span>
+        </a>
+        <a class="explore-card" href="foods.html">
+          <span class="num">03</span>
+          <h3>Food database</h3>
+          <p>Around fifty everyday foods with typical servings and macros, searchable and filterable — a quick reference for the meals you actually eat.</p>
+          <span class="go">Browse foods →</span>
+        </a>
+        <a class="explore-card" href="tips.html">
+          <span class="num">04</span>
+          <h3>Tips &amp; FAQ</h3>
+          <p>Practical ways to make counting easier, the mistakes people make, and straight answers to the questions that come up most.</p>
+          <span class="go">Read the advice →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Curious what <em>your</em> number is?</h2>
+          <p>Two minutes with the calculator beats a week of guessing. It only needs your height, weight, age and how active you are.</p>
+        </div>
+        <a class="btn btn-primary" href="calculator.html">Open the calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="index.html" style="margin-bottom:10px"><span class="dot"></span>Ember</a>
+        <p>Understanding the calories you eat — calmly, accurately, without the drama.</p>
+      </div>
+      <ul>
+        <li><a href="what-are-calories.html">What are calories</a></li>
+        <li><a href="calculator.html">Calculator</a></li>
+        <li><a href="foods.html">Food database</a></li>
+        <li><a href="tips.html">Tips &amp; FAQ</a></li>
+      </ul>
+    </div>
+    <p class="disclaimer">Educational content only. Not medical advice — consult a healthcare professional before making significant changes to your diet.</p>
+  </div>
+</footer>
+
+</body>
+</html>
